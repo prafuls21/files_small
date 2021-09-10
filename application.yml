@@ -1,0 +1,68 @@
+custom:
+    tomcat:
+        datasource:
+            factory: org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory
+            name: jdbc/bpm
+        jndi:
+            name: java:comp/env/jdbc/bpm
+cxf:
+    path: /rest
+jbpm:
+    executor:
+        enabled: false
+kieserver:
+    casemgmt:
+        enabled: true
+    dmn:
+        enabled: true
+    drools:
+        enabled: true
+    jbpm:
+        enabled: true
+    jbpmui:
+        enabled: true
+    location: http://localhost:8090/rest/server
+    serverId: business-application-service
+    serverName: business-application-service
+    swagger:
+        enabled: true
+logging:
+    level:
+        com:
+            arjuna:
+                ats:
+                    jdbc: INFO
+narayana:
+    dbcp:
+        enabled: true
+        initialSize: 10
+        maxTotal: 20
+server:
+    address: 0.0.0.0
+    port: 8090
+    servlet:
+        context-path: /bpm
+spring:
+    banner:
+        location: classpath:banner.txt
+    datasource:
+        driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        password: Sql@123
+        url: jdbc:sqlserver://localhost:1433;databaseName=jbpm715
+        username: sa
+    jpa:
+        database-platform: org.hibernate.dialect.SQLServerDialect
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        properties:
+            entity-scan-packages: application.entity
+            hibernate:
+                dialect: org.hibernate.dialect.SQLServerDialect
+                hbm2ddl:
+                    auto: none
+                show_sql: true
+    jta:
+        narayana:
+            default-timeout: 120
+            transaction-manager-id: 1
